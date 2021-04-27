@@ -1,7 +1,7 @@
 package config
 
 import (
-	yaml "gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"strings"
 )
@@ -131,14 +131,15 @@ type ConfigConnectCredentials struct {
 }
 
 type ConfigProxy struct {
-	Bind           string             `yaml:"bind"`
-	Routes         []ConfigProxyRoute `yaml:"routes"`
-	routes         map[string]ConfigProxyRoute
-	Locale         ConfigProxyLocale `yaml:"locale"`
-	Motd           string            `yaml:"motd"`
-	MaxPlayers     uint16            `yaml:"maxPlayers"`
-	SyncMaxPlayers bool              `yaml:"syncMaxPlayers"`
-	Authenticate   bool              `yaml:"authenticate"`
+	Bind                        string             `yaml:"bind"`
+	Routes                      []ConfigProxyRoute `yaml:"routes"`
+	routes                      map[string]ConfigProxyRoute
+	Locale                      ConfigProxyLocale `yaml:"locale"`
+	Motd                        string            `yaml:"motd"`
+	MaxPlayers                  uint16            `yaml:"maxPlayers"`
+	SyncMaxPlayers              bool              `yaml:"syncMaxPlayers"`
+	Authenticate                bool              `yaml:"authenticate"`
+	NetworkCompressionThreshold int               `yaml:"networkCompressionThreshold"`
 }
 
 type ConfigProxyLocale struct {
@@ -188,6 +189,7 @@ func DefaultConfig() (config *Config) {
 		Motd:         "A LilyPad Server",
 		MaxPlayers:   1,
 		Authenticate: true,
+		NetworkCompressionThreshold: 256,
 	}
 	return
 }
