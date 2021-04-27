@@ -199,7 +199,7 @@ func LoadConfig(file string) (config *Config, err error) {
 	if err != nil {
 		return
 	}
-	config = new(Config)
+	config = DefaultConfig() // use default config in case a value isnt set yet
 	err = yaml.Unmarshal(data, config)
 	if err != nil {
 		return
